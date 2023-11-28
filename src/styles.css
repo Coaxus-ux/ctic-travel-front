@@ -54,15 +54,11 @@ body {
 
 .container-add{
   display: flex;
-
-
   flex-direction: row;
   width: 100%;
   justify-content: center;
   align-items: center;
-
   padding: 100px;
-
 }
 .left-child{
   display: flex;
@@ -96,7 +92,7 @@ body {
   overflow: auto;
   max-height: 600px;
   box-sizing: border-box;
-padding:0 1rem;
+  padding:0 1rem;
 }
 
 

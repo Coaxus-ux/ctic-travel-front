@@ -91,7 +91,6 @@ export class AccommodationComponent implements OnInit {
     this.LocationsService.getCities(this.selectedState, this.countrySelect).then((response) => {
       if (!response.data.error) {
         if (response.data.data.length === 0) {
-          console.log("No cities found")
           this.cities = [this.selectedState]
           return;
         }

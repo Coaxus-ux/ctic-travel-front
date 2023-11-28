@@ -1,0 +1,55 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-add">
+  <div class="left-child">
+    <h1>Destino turistico</h1>
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{destination.touristDestinationCountry}}</mat-card-title>
+          <mat-card-subtitle>{{destination.touristDestinationState}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <span class="spacer"></span>
+    <h1>Lugares relacionados</h1>
+    <div class="card-container">
+      @for ( relatedPlace of relatedPlaces; track relatedPlace.id) {
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{relatedPlace.atractivePlaceName}}</mat-card-title>
+            <mat-card-subtitle>{{relatedPlace.atractivePlaceCity}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{relatedPlace.atractivePlaceDescription}}</p>
+          </mat-card-content>
+        </mat-card>
+
+    <span class="spacer"></span>
+      }
+    </div>
+
+  </div>
+  <div class="right-child">
+    <h1>Crear nuevo lugar</h1>
+    <div>
+      <mat-form-field class="styled-form">
+        <input matInput placeholder="Nombre" [(ngModel)]="placeName">
+      </mat-form-field>
+
+      <mat-form-field class="styled-form">
+        <textarea matInput placeholder="Descripcion" [(ngModel)]="placeDescription"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="styled-form">
+        <mat-label>Seleccione tipo de hospedaje - tipo/habitacciones</mat-label>
+        <mat-select name="accommodation" (selectionChange)="onSelectedCity($event.value)">
+          @for (city of cities; track city) {
+          <mat-option [value]="city">{{city}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="createPlace()">Crear</button>
+    </div>
+  </div>
+</div>

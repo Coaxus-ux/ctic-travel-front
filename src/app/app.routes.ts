@@ -5,7 +5,7 @@ import {TouristDestinationsComponent} from './components/admin/tourist-destinati
 import {TransportComponent} from './components/admin/transport/transport.component';
 import {NavBarComponent} from "./components/admin/nav-bar/nav-bar.component";
 import {AccommodationComponent} from "./components/admin/accommodation/accommodation.component";
-
+import {AddPlacesToDestinationsComponent} from "./components/admin/add-places-to-destinations/add-places-to-destinations.component";
 export const routes: Routes = [
   {
     path: 'admin/auth',
@@ -36,6 +36,11 @@ export const routes: Routes = [
     path: 'admin/accommodation',
     title: 'Accommodation',
     component: AccommodationComponent
+  },
+  {
+    path: 'admin/add-places-to-destinations/:id',
+    title: 'Add Places To Destinations',
+    component: AddPlacesToDestinationsComponent
   }
 ];
 

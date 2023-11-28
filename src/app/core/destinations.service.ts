@@ -28,7 +28,44 @@ export class DestinationsService {
         touristDestinationState: state
       }
     })
-
   }
 
+  getDestinationById(id: string | null) {
+    if (id == null) {
+      return null;
+    }
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/touristDestinations/getTouristDestinationsById',
+      data : {
+        touristDestinationId: id
+      }
+    })
+  }
+
+  addPlaces(data:any){
+    console.log("data")
+  console.log(data)
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/attractive-places/create',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
+      data: data
+    })
+  }
+
+  getPlacesByDestinationId(id: string | null) {
+    if (id == null) {
+      return null;
+    }
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/attractive-places/get-by-tourist-destination',
+      data : {
+        touristDestination: {
+          touristDestinationId: id
+        }
+      }
+    })
+  }
 }
