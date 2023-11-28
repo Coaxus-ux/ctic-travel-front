@@ -1,0 +1,36 @@
+<div class="container-login">
+  <div class="card-login">
+    <h1>Login</h1>
+    <form class="form">
+
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Correo invalido</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>Correo es <strong>obligatorio</strong></mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        @if (passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')) {
+        <mat-error>Contraseña debe ser mayor a 8 caracteres</mat-error>
+        }
+        @if (passwordFormControl.hasError('required')) {
+        <mat-error>Contraseña es <strong>obligatoria</strong></mat-error>
+        }
+      </mat-form-field>
+
+     <button mat-raised-button color="primary" class="full-width" (click)="login()">Iniciar</button>
+      <button mat-button color="accent" class="full-width" style="margin-top: 5px">Registrarse</button>
+
+    </form>
+
+
+  </div>
+</div>

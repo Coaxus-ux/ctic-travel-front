@@ -1,1 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.container-login {
+  display: flex;
+  margin: 0 20% 0 20%;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.full-width {
+  width: 100%;
+}
+.nav-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.spacer {
+  margin: 5px;
+}
+
+.container-add{
+  display: flex;
+
+
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  padding: 100px;
+
+}
+.left-child{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+
+  margin-right: 100px;
+}
+.right-child{
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  & button {
+    width: 70%;
+  }
+  padding-right: 100px ;
+
+}
+
+.styled-form{
+  width: 70%;
+}
+.styled-form-divide{
+  width: 34.5%;
+
+}

@@ -1,0 +1,79 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container-add">
+  <div class="left-child">
+    <h1>Hospedajes disponibles</h1>
+    <div class="card-container">
+
+      <!--@for (transport of transports; track transport.id) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ transport.transportMethodType}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-button>EDITAR</button>
+        </mat-card-actions>
+      </mat-card>
+      <span class="spacer"></span>
+      } @empty {
+      No hay transportes disponibles
+      }-->
+    </div>
+
+  </div>
+  <div class="right-child">
+    <h1>Crear Hospedaje</h1>
+    <div>
+      <mat-form-field class="styled-form">
+        <input matInput placeholder="Nombre">
+      </mat-form-field>
+      <mat-form-field class="styled-form">
+        <input matInput placeholder="Direccion">
+      </mat-form-field>
+
+      <mat-form-field class="styled-form">
+        <input matInput placeholder="Precio" type="number">
+      </mat-form-field>
+      <mat-form-field class="styled-form">
+        <mat-label>Seleccione pais</mat-label>
+        <mat-select>
+          <!--         @for (state of states; track state.state_code) {-->
+          <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
+          <!--          }-->
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <mat-form-field class="styled-form-divide">
+          <mat-label>Seleccione estado</mat-label>
+          <mat-select>
+            <!--         @for (state of states; track state.state_code) {-->
+            <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
+            <!--          }-->
+          </mat-select>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <mat-form-field class="styled-form-divide">
+          <mat-label>Seleccione estado</mat-label>
+          <mat-select>
+            <!--         @for (state of states; track state.state_code) {-->
+            <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
+            <!--          }-->
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="styled-form-divide">
+          <mat-label>Check-in</mat-label>
+          <input type="time" matInput name="checkIn"/>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <mat-form-field class="styled-form-divide">
+          <mat-label>Check-out</mat-label>
+          <input type="time" matInput name="checkOut"/>
+        </mat-form-field>
+
+      </div>
+    </div>
+    <h1>Crear Tipo hospedaje</h1>
+  </div>
+</div>

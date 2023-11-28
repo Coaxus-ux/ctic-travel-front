@@ -1,0 +1,32 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-add">
+  <div class="left-child">
+    <h1>Disponibles</h1>
+    <div class="card-container">
+
+      @for (transport of transports; track transport.id) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ transport.transportMethodType}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-button>EDITAR</button>
+        </mat-card-actions>
+      </mat-card>
+      <span class="spacer"></span>
+      } @empty {
+      No hay transportes disponibles
+      }
+    </div>
+  </div>
+  <div class="right-child">
+    <h1>Crear</h1>
+    <div>
+      <mat-form-field class="styled-form">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" [(ngModel)]="transport">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addTransport()">Nombre</button>
+    </div>
+  </div>
+</div>

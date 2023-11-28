@@ -1,0 +1,51 @@
+<script src="tourist-destinations.component.ts"></script>
+<app-nav-bar></app-nav-bar>
+<div class="container-add">
+  <div class="left-child">
+    <h1>Disponibles</h1>
+    <div class="card-container">
+      @for (destination of destinations; track destination.id) {
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ destination.touristDestinationCountry}}</mat-card-title>
+          <mat-card-subtitle>{{ destination.touristDestinationState}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-button>EDITAR</button>
+        </mat-card-actions>
+      </mat-card>
+      <span class="spacer"></span>
+      } @empty {
+      No hay destinos disponibles
+      }
+    </div>
+  </div>
+  <div class="right-child">
+    <h1>Crear</h1>
+    <div>
+      <mat-form-field class="styled-form">
+        <mat-label>Pais</mat-label>
+        <mat-select [(ngModel)]="countrySelect" name="country" (ngModelChange)="OnSelectCountry($event)">
+          @for (country of countries; track country.iso2) {
+          <mat-option [value]="country.country">{{country.country}}</mat-option>
+          }
+        </mat-select>
+
+
+      </mat-form-field>
+
+      <mat-form-field class="styled-form">
+        <mat-label>Seleccione estado</mat-label>
+        <mat-select  [disabled]="disableSelect.value" name="state" (selectionChange)="selectState($event.value)">
+         @for (state of states; track state.state_code) {
+          <mat-option [value]="state.name">{{state.name}}</mat-option>
+          }
+        </mat-select>
+
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="addDestination()">Agregar</button>
+
+    </div>
+  </div>
+</div>

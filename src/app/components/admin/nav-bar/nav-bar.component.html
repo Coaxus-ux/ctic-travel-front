@@ -1,0 +1,14 @@
+<mat-toolbar class="nav-admin">
+  <span>CTIC TRAVEL</span>
+  <div class="nav-admin-cta">
+    <button mat-raised-button color="primary" (click)="logout('admin/dashboard')">Dashboard</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="logout('admin/transport')">Transportes</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="logout('admin/tourist-destinations')">Destinos Turisticos</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="logout('admin/accommodation')">Hospedajes</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="warn" (click)="logout('logout')">Salir</button>
+  </div>
+</mat-toolbar>
