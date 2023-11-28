@@ -91,3 +91,33 @@ body {
   width: 34.5%;
 
 }
+.card-container{
+  color : white !important;
+  overflow: auto;
+  max-height: 600px;
+  box-sizing: border-box;
+padding:0 1rem;
+}
+
+
+.card-container::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.card-container::-webkit-scrollbar:vertical {
+    width:10px;
+}
+.card-container::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+}
+.card-container::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+.card-container::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+.card-container::-webkit-scrollbar-track {
+    border-radius: 10px;
+}

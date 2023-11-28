@@ -29,4 +29,15 @@ export class LocationsService {
       }
     })
   }
+  getCities(state: string, country:string) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/api/v1/location/states-cities',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
+      data:{
+        state: state,
+        country: country
+      }
+    })
+  }
 }
