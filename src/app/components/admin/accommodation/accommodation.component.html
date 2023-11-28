@@ -4,20 +4,30 @@
   <div class="left-child">
     <h1>Hospedajes disponibles</h1>
     <div class="card-container">
-
-      <!--@for (transport of transports; track transport.id) {
+      @for (accommodation of accommodationList; track accommodation.id) {
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ transport.transportMethodType}}</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
-          <button mat-button>EDITAR</button>
-        </mat-card-actions>
-      </mat-card>
-      <span class="spacer"></span>
+      <mat-card-header>
+        <mat-card-title>{{ accommodation.accommodationName}}</mat-card-title>
+        <mat-card-subtitle>{{ accommodation.accommodationType}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><span>País:</span>  {{accommodation.accommodationCountry}}</p>
+        <p>Estado: {{accommodation.accommodationState}}</p>
+        <p>Ciudad: {{accommodation.accommodationCity}}</p>
+        <p>Check-in: {{accommodation.accommodationCheckInSchedule}}</p>
+        <p>Check-out: {{accommodation.accommodationCheckOutSchedule}}</p>
+        <p>Dirección: {{accommodation.accommodationAddress}}</p>
+        <p>Precio: {{accommodation.accommodationPrice |  currency }}</p>
+        <p>Habitaciones: {{accommodation.accommodationTypeRomms}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>EDITAR</button>
+      </mat-card-actions>
+    </mat-card>
+    <span class="spacer"></span>
       } @empty {
       No hay transportes disponibles
-      }-->
+      }
     </div>
 
   </div>
@@ -25,55 +35,77 @@
     <h1>Crear Hospedaje</h1>
     <div>
       <mat-form-field class="styled-form">
-        <input matInput placeholder="Nombre">
+        <input matInput placeholder="Nombre" [(ngModel)]="accommodationName">
       </mat-form-field>
       <mat-form-field class="styled-form">
-        <input matInput placeholder="Direccion">
+        <input matInput placeholder="Direccion" [(ngModel)]="accommodationAddress">
       </mat-form-field>
 
       <mat-form-field class="styled-form">
-        <input matInput placeholder="Precio" type="number">
+        <input matInput placeholder="Precio" type="number" [(ngModel)]="accommodationPriceInput">
       </mat-form-field>
       <mat-form-field class="styled-form">
         <mat-label>Seleccione pais</mat-label>
-        <mat-select>
-          <!--         @for (state of states; track state.state_code) {-->
-          <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
-          <!--          }-->
+        <mat-select [(ngModel)]="countrySelect" name="country" (ngModelChange)="OnSelectCountry($event)">
+          @for (country of countries; track country.iso2) {
+          <mat-option [value]="country.country">{{country.country}}</mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <div>
         <mat-form-field class="styled-form-divide">
           <mat-label>Seleccione estado</mat-label>
-          <mat-select>
-            <!--         @for (state of states; track state.state_code) {-->
-            <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
-            <!--          }-->
+          <mat-select [disabled]="disableSelectState.value" name="state" (selectionChange)="selectState($event.value)">
+            @for (state of states; track state.state_code) {
+            <mat-option [value]="state.name">{{state.name}}</mat-option>
+            }
           </mat-select>
         </mat-form-field>
         <span class="spacer"></span>
         <mat-form-field class="styled-form-divide">
           <mat-label>Seleccione estado</mat-label>
-          <mat-select>
-            <!--         @for (state of states; track state.state_code) {-->
-            <!--          <mat-option [value]="state.name">{{state.name}}</mat-option>-->
-            <!--          }-->
+          <mat-select [disabled]="disableSelectCity.value" name="city" (selectionChange)="selectCity($event.value)">
+            @for (city of cities; track city) {
+            <mat-option [value]="city">{{city}}</mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="styled-form-divide">
           <mat-label>Check-in</mat-label>
-          <input type="time" matInput name="checkIn"/>
+          <input type="time" matInput name="checkIn" [(ngModel)]="accommodationCheckInSchedule"/>
         </mat-form-field>
         <span class="spacer"></span>
         <mat-form-field class="styled-form-divide">
           <mat-label>Check-out</mat-label>
-          <input type="time" matInput name="checkOut"/>
+          <input type="time" matInput name="checkOut" [(ngModel)]="accommodationCheckOutSchedule"/>
         </mat-form-field>
-
       </div>
+      <mat-form-field class="styled-form">
+        <mat-label>Seleccione tipo de hospedaje - tipo/habitacciones</mat-label>
+        <mat-select name="accommodation" (selectionChange)="onSelectedAccommodationType($event.value)">
+          @for (accommodation of accommodationTypes; track accommodation.id) {
+          <mat-option [value]="accommodation.id">{{accommodation.accommodationTypeName}} | {{
+          accommodation.accommodationTypeRooms}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addAccommodations()">Crear hospedaje</button>
     </div>
+    <span class="spacer"></span>
     <h1>Crear Tipo hospedaje</h1>
+    <div>
+      <mat-form-field class="styled-form-divide">
+        <input matInput placeholder="Nombre del tipo" [(ngModel)]="accommodationTypeNameC">
+      </mat-form-field>
+      <span class="spacer"></span>
+      <mat-form-field class="styled-form-divide">
+        <input matInput placeholder="No. Habitaciones" type="number" [(ngModel)]="accommodationTypeRoomsC">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="addAccommodationType()">Crear tipo</button>
   </div>
 </div>
+
+
