@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl: 'https://backend.sisbel.co/'
+  baseUrl: 'https://backend.sisbel.co'
 }
