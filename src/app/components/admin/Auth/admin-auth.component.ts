@@ -52,6 +52,10 @@ private router = inject(Router);
       }
     );
   }
+
+  redirec() {
+    this.router.navigate(['/admin/register']);
+  }
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {

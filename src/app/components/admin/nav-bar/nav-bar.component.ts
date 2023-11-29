@@ -25,5 +25,8 @@ export class NavBarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if (!localStorage.getItem('jwt')) {
+      this.router.navigate(['/admin/auth']);
+    }
   }
 }

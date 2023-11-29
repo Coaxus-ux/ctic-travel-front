@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  front_angular_citcd:
+    container_name: angular_app_citcd
+    image: front/angular:1.0.0
+    build:
+      context: .
+    ports:
+      - "4200:4200"
+    networks:
+      - front_citcd
+
+networks:
+  front_citcd:
+    name: front_citcd
