@@ -10,13 +10,12 @@ export class DestinationsService {
   private readonly baseUrl = environment.baseUrl;
 
   private http = inject(HttpClient);
-  public jwt = localStorage.getItem('jwt');
 
   getAllDestinations() {
     return axios({
       method: 'get',
       url: this.baseUrl + '/touristDestinations/getAllTouristDestinations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"}
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"}
     })
   }
 
@@ -24,7 +23,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/createTouristDestinations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristDestinationCountry: country,
         touristDestinationState: state
@@ -39,7 +38,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/getTouristDestinationsById',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
 
       data: {
         touristDestinationId: id
@@ -53,7 +52,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/attractive-places/create',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }
@@ -65,7 +64,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/attractive-places/get-by-tourist-destination',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristDestination: {
           touristDestinationId: id
@@ -77,7 +76,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/getTouristDestinations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristDestinationCountry: country,
       }
@@ -88,7 +87,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/tourist-destination-tourist-plans/add',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }

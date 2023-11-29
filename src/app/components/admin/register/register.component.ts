@@ -9,6 +9,7 @@ import {NavBarComponent} from "../nav-bar/nav-bar.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import Swal from "sweetalert2";
+import {AuthAdminService} from "../../../core/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -18,19 +19,20 @@ import Swal from "sweetalert2";
 })
 export class RegisterComponent {
   private router = inject(Router);
+  private authAdminService = inject(AuthAdminService);
 
   public person = {
-    nameUser: '',
-    lastName: '',
-    email: '',
-    password: '',
-    phone: '',
+    adminName: '',
+    adminLastName: '',
+    adminEmail: '',
+    adminPassword: '',
+    adminPhone: '',
   }
 
 
   register() {
-    let {nameUser, lastName, email, password, phone} = this.person;
-    if (nameUser === '' || lastName === '' || email === '' || password === '' || phone === '') {
+    let {adminName, adminLastName, adminEmail, adminPassword, adminPhone} = this.person;
+    if (adminName === '' || adminLastName === '' || adminEmail === '' || adminPassword === '' || adminPhone === '') {
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -38,6 +40,29 @@ export class RegisterComponent {
       })
       return;
     }
+    this.authAdminService.register(this.person).then((response: any) => {
+      if (response.data.error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: response.data.message,
+        })
+        return;
+      }
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Registro exitoso',
+      })
+      this.router.navigate(['/admin/auth']);
+    }).catch((error: any) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error al registrar',
+      })
+    });
+
   }
 
   redirec() {

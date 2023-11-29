@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from '../../environments/environments';
 import {catchError, map, Observable, throwError} from "rxjs";
 import {LoginResponseI} from "../interfaces/AuthI"
+import axios from "axios";
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +26,13 @@ export class AuthAdminService {
       }),
       catchError( err => throwError( () => err.error.message ))
     );
+  }
+  register(data: any) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/admins/register',
+      headers: {"Content-Type": "application/json"},
+      data: data
+    })
   }
 }
