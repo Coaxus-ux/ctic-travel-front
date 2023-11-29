@@ -10,7 +10,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from '@angular/material/select';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import Swal from "sweetalert2";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tourist-destinations',
   standalone: true,
@@ -20,6 +20,7 @@ import Swal from "sweetalert2";
 export class TouristDestinationsComponent implements OnInit {
   private LocationsService = inject(LocationsService);
   private DestinationsService = inject(DestinationsService);
+  private router = inject(Router);
   public countries: any[] = [];
   public states: any[] = [];
   public destinations: any[] = [];
@@ -30,6 +31,10 @@ export class TouristDestinationsComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries();
     this.getDestinations();
+  }
+
+  onClickAddPlaces(id :string) {
+    this.router.navigate(['/admin/add-places-to-destinations', id]);
   }
 
   OnSelectCountry(event: any) {

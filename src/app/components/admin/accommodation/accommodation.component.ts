@@ -33,11 +33,11 @@ export class AccommodationComponent implements OnInit {
   public selectedAccommodationType: any;
   public accommodationName: string = '';
   public accommodationAddress: string = '';
-  public accommodationPriceInput: number = 0;
+  public accommodationPriceInput: any;
   public accommodationCheckInSchedule: string = '';
   public accommodationCheckOutSchedule: string = '';
   public accommodationTypeNameC: string = '';
-  public accommodationTypeRoomsC: number = 0;
+  public accommodationTypeRoomsC: any;
 
   ngOnInit(): void {
     this.getCountries();
@@ -91,7 +91,6 @@ export class AccommodationComponent implements OnInit {
     this.LocationsService.getCities(this.selectedState, this.countrySelect).then((response) => {
       if (!response.data.error) {
         if (response.data.data.length === 0) {
-          console.log("No cities found")
           this.cities = [this.selectedState]
           return;
         }
