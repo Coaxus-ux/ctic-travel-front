@@ -18,10 +18,6 @@ export class AuthAdminService {
       map((response: LoginResponseI) => {
         if (response.successful) {
           localStorage.setItem('adminId', response.data.adminId);
-          localStorage.setItem('adminName', response.data.adminName);
-          localStorage.setItem('adminLastName', response.data.adminLastName);
-          localStorage.setItem('adminPhone', response.data.adminPhone);
-          localStorage.setItem('adminEmail', response.data.adminEmail);
           localStorage.setItem('jwt', response.jwt);
           return true;
         }

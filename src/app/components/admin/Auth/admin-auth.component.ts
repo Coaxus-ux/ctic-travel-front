@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {AuthAdminService} from "../../../core/auth.service";
+import {Router} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'admin-auth',
@@ -22,7 +24,7 @@ import {AuthAdminService} from "../../../core/auth.service";
 })
 export class AdminAuthComponent {
   private authAdminService = inject(AuthAdminService);
-
+private router = inject(Router);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
   matcher = new MyErrorStateMatcher();
@@ -32,13 +34,21 @@ export class AdminAuthComponent {
     this.authAdminService.login(this.emailFormControl.value!, this.passwordFormControl.value!).subscribe(
       (response) => {
         if (response) {
-          console.log('Login successful');
+          this.router.navigate(['/admin/dashboard']);
         } else {
-          console.log('Login failed');
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Credenciales no validas',
+          })
         }
       },
       (error) => {
-        console.log('Login failed');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Credenciales no validas',
+          })
       }
     );
   }
