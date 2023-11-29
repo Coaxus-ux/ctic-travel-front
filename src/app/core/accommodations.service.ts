@@ -8,7 +8,7 @@ import axios from "axios";
 })
 export class AccommodationsService {
   private readonly baseUrl = environment.baseUrl;
-  public jwt = localStorage.getItem('jwt');
+
 
   private http = inject(HttpClient);
 
@@ -19,7 +19,7 @@ export class AccommodationsService {
     return axios({
       method: 'get',
       url: this.baseUrl + '/accommodation/getAccommodations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"}
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"}
     })
   }
 
@@ -27,7 +27,7 @@ export class AccommodationsService {
     return axios({
       method: 'get',
       url: this.baseUrl + '/accommodationTypes/getAccommodationTypes',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"}
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"}
     })
   }
 
@@ -35,7 +35,7 @@ export class AccommodationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/accommodation/createAccommodation',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }
@@ -48,7 +48,7 @@ export class AccommodationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/accommodationTypes/addAccommodationType',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }
@@ -56,7 +56,7 @@ export class AccommodationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/accommodation/getAccommodationsByLocation',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         accommodationCountry: country,
         accommodationState: state,
@@ -68,7 +68,7 @@ export class AccommodationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/accommodationsTouristPlans/addAccommodationsTouristPlans',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }

@@ -8,7 +8,6 @@ import axios from "axios";
 })
 export class LocationsService {
   private readonly baseUrl = environment.baseUrl;
-  public jwt = localStorage.getItem('jwt');
   private http = inject( HttpClient );
 
   getCountries() {
@@ -16,14 +15,14 @@ export class LocationsService {
     return axios({
       method: 'get',
       url: this.baseUrl + '/api/v1/location/countries-cities',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" }
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json" }
     })
   }
   getStates(country: string) {
     return axios({
       method: 'post',
       url: this.baseUrl + '/api/v1/location/contry-states',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json" },
       data:{
         country: country
       }
@@ -33,7 +32,7 @@ export class LocationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/api/v1/location/states-cities',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json" },
       data:{
         state: state,
         country: country

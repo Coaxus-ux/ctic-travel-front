@@ -10,8 +10,6 @@ export class PlansService {
   private readonly baseUrl = environment.baseUrl;
 
   private http = inject(HttpClient);
-  public jwt = localStorage.getItem('jwt');
-  public adminId = localStorage.getItem('adminId');
 
   constructor() {
   }
@@ -20,10 +18,10 @@ export class PlansService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/tourist-plans/get-all-admin',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         admin: {
-          adminId: this.adminId
+          adminId: localStorage.getItem('adminId')
         }
       }
     })
@@ -31,13 +29,13 @@ export class PlansService {
 
   createPlan(data: any) {
     data.admin = {
-      adminId: this.adminId
+      adminId: localStorage.getItem('adminId')
     }
     data.isAvailable = false;
     return axios({
       method: 'post',
       url: this.baseUrl + '/tourist-plans/create',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: data
     })
   }
@@ -46,7 +44,7 @@ export class PlansService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/tourist-plans/get-by-id',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristPlanId: id
       }
@@ -58,7 +56,7 @@ export class PlansService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/tourist-destination-tourist-plans/get-by-tourist-plan',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristPlan: {
           touristPlanId: id
@@ -71,7 +69,7 @@ export class PlansService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/accommodationsTouristPlans/getAccommodationsTouristPlansByTouristPlan',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristPlan: {
           touristPlanId: id
@@ -90,7 +88,7 @@ export class PlansService {
     return axios({
       method: 'post',
       url: this.baseUrl + url,
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      headers: {Authorization: "Bearer " + localStorage.getItem('jwt'), "Content-Type": "application/json"},
       data: {
         touristPlanId: id
       }

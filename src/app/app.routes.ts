@@ -9,6 +9,7 @@ import {AddPlacesToDestinationsComponent} from "./components/admin/add-places-to
 import {AddPlansComponent} from "./components/admin/add-plans/add-plans.component";
 import {EditPlansComponent} from "./components/admin/edit-plans/edit-plans.component";
 import {RegisterComponent} from "./components/admin/register/register.component";
+import {MainPageComponent} from "./components/general/main-page/main-page.component";
 
 export const routes: Routes = [
   {
@@ -60,6 +61,11 @@ export const routes: Routes = [
     path: 'admin/register',
     title: 'Register',
     component: RegisterComponent
+  },
+  {
+    path: '',
+    title: 'CTIC-TRAVEL',
+    component: MainPageComponent
   }
 ];
 
