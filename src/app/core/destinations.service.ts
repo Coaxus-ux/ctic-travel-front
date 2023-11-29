@@ -9,21 +9,23 @@ import axios from "axios";
 export class DestinationsService {
   private readonly baseUrl = environment.baseUrl;
 
-  private http = inject( HttpClient );
- public jwt = localStorage.getItem('jwt');
+  private http = inject(HttpClient);
+  public jwt = localStorage.getItem('jwt');
+
   getAllDestinations() {
     return axios({
       method: 'get',
       url: this.baseUrl + '/touristDestinations/getAllTouristDestinations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" }
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"}
     })
   }
+
   addDestination(country: string, state: string) {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/createTouristDestinations',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
-      data:{
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      data: {
         touristDestinationCountry: country,
         touristDestinationState: state
       }
@@ -37,19 +39,19 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/getTouristDestinationsById',
-      data : {
+      data: {
         touristDestinationId: id
       }
     })
   }
 
-  addPlaces(data:any){
+  addPlaces(data: any) {
     console.log("data")
-  console.log(data)
+    console.log(data)
     return axios({
       method: 'post',
       url: this.baseUrl + '/attractive-places/create',
-      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json" },
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
       data: data
     })
   }
@@ -61,7 +63,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/attractive-places/get-by-tourist-destination',
-      data : {
+      data: {
         touristDestination: {
           touristDestinationId: id
         }

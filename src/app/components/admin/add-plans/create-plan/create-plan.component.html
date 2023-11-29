@@ -1,0 +1,47 @@
+<div class="container-create-plan">
+  <mat-form-field class="styled-form-create">
+    <input matInput placeholder="Nombre" [(ngModel)]="planName">
+  </mat-form-field>
+
+  <mat-form-field class="styled-form-create">
+    <input matInput placeholder="Descripcióon" [(ngModel)]="planDescription">
+  </mat-form-field>
+
+  <mat-form-field class="styled-form-create">
+    <mat-label>Precio del plan turistico</mat-label>
+    <input matInput placeholder="precio" type="number" [(ngModel)]="planPrice">
+  </mat-form-field>
+  <mat-form-field class="styled-form-create">
+    <mat-label>Numero de cupos</mat-label>
+    <input matInput placeholder="available" type="number" [(ngModel)]="PackagesAvailable">
+  </mat-form-field>
+  <mat-form-field class="styled-form-create">
+    <mat-label>Duracion del plan turistico</mat-label>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Start date">
+      <input matEndDate formControlName="end" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <mat-form-field class="styled-form-create">
+    <mat-label>Seleccione pais</mat-label>
+    <mat-select [(ngModel)]="countrySelect" name="country" (ngModelChange)="OnSelectCountry($event)">
+      @for (country of countries; track country.iso2) {
+      <mat-option [value]="country.country">{{country.country}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="styled-form-create">
+    <mat-label>Metodo de transporte</mat-label>
+    <mat-select [(ngModel)]="selectedTransport" name="country" (ngModelChange)="OnSelectTransport($event)">
+      @for (transport of transports; track transport.id) {
+      <mat-option [value]="transport.id">{{transport.transportMethodType}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="createPlan()" style="width: 30%">Crear</button>
+  <span class="spacer"></span>
+  <button mat-raised-button color="warn" (click)="backToDashboard()" style="width: 30%">Cancelar</button>
+</div>

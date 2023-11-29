@@ -33,11 +33,11 @@ export class AccommodationComponent implements OnInit {
   public selectedAccommodationType: any;
   public accommodationName: string = '';
   public accommodationAddress: string = '';
-  public accommodationPriceInput: number = 0;
+  public accommodationPriceInput: any;
   public accommodationCheckInSchedule: string = '';
   public accommodationCheckOutSchedule: string = '';
   public accommodationTypeNameC: string = '';
-  public accommodationTypeRoomsC: number = 0;
+  public accommodationTypeRoomsC: any;
 
   ngOnInit(): void {
     this.getCountries();

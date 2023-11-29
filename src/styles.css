@@ -83,6 +83,9 @@ body {
 .styled-form{
   width: 70%;
 }
+.styled-form-create{
+  width: 30%;
+}
 .styled-form-divide{
   width: 34.5%;
 
@@ -117,3 +120,34 @@ body {
 .card-container::-webkit-scrollbar-track {
     border-radius: 10px;
 }
+.container-plan{
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.card-plan{
+  max-width: 300px;
+  min-width: 300px;
+  min-height: 175px;
+}
+.add-plan-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+
+  cursor: pointer;
+}
+.icon{
+  color: white;
+}
+.container-create-plan{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
