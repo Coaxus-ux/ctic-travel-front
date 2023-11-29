@@ -1,0 +1,37 @@
+<div class="container-login">
+  <div class="card-login">
+    <h1>Registrarse</h1>
+    <form class="form">
+
+
+      <mat-form-field class="full-width">
+        <mat-label>Nombres</mat-label>
+        <input type="text" name="names" matInput [(ngModel)]="person.nameUser">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Apellidos</mat-label>
+        <input type="text" name="lastname" matInput [(ngModel)]="person.lastName">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Celular</mat-label>
+        <input type="text" name="phone" matInput [(ngModel)]="person.phone">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" matInput
+               placeholder="Ex. pat@example.com" [(ngModel)]="person.email">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+
+        <mat-label>Contraseña</mat-label>
+        <input type="password" name="password" matInput [(ngModel)]="person.password">
+      </mat-form-field>
+
+     <button mat-raised-button color="primary" class="full-width" (click)="register()">Registrarse</button>
+      <button mat-button color="accent" class="full-width" style="margin-top: 5px" (click)="redirec()">Iniciar sesion</button>
+
+    </form>
+
+
+  </div>
+</div>

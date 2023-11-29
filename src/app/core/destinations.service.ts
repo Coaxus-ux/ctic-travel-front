@@ -39,6 +39,8 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/touristDestinations/getTouristDestinationsById',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+
       data: {
         touristDestinationId: id
       }
@@ -63,6 +65,7 @@ export class DestinationsService {
     return axios({
       method: 'post',
       url: this.baseUrl + '/attractive-places/get-by-tourist-destination',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
       data: {
         touristDestination: {
           touristDestinationId: id
@@ -70,4 +73,24 @@ export class DestinationsService {
       }
     })
   }
+  getDestinationByCountry(country: string) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/touristDestinations/getTouristDestinations',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      data: {
+        touristDestinationCountry: country,
+      }
+    })
+  }
+
+  addDestinationToPlan(data: any) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/tourist-destination-tourist-plans/add',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      data: data
+    })
+  }
+
 }

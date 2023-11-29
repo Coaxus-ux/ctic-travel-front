@@ -1,1 +1,82 @@
-<p>edit-plans works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container-add">
+  <div class="left-child">
+    <h1>Plan turistico</h1>
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{plan.touristPlanName}}</mat-card-title>
+          <mat-card-subtitle>{{plan.touristPlanCountry}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{plan.touristPlanDescription}}</p>
+          <p>Estado:
+            @switch (this.isAvailable) {
+              @case (true) { <span> Al publico </span> }
+              @case (false) { <span>Privado</span> }
+            }
+
+          </p>
+          <button mat-raised-button color="primary" (click)="changeAvailable()">Cambiar estado</button>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <span class="spacer"></span>
+    <h1>Lugares relacionados</h1>
+    <div class="card-container">
+
+      @for(relatedPlace of relatedPlaces; track relatedPlace.id) {
+
+      <mat-card >
+        <mat-card-header>
+          <mat-card-title>{{relatedPlace.accommodationState}}</mat-card-title>
+          <mat-card-subtitle>{{relatedPlace.accommodationCity}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Hotel: {{relatedPlace.accommodationName}}</p>
+        </mat-card-content>
+      </mat-card>
+      <span class="spacer"></span>
+      }
+
+    </div>
+
+  </div>
+  <div class="right-child">
+    <h1>Asignar Destinos</h1>
+    <div>
+
+      <mat-form-field class="styled-form">
+        <mat-label>Destinos turisticos en el area</mat-label>
+        <mat-select name="accommodation" (selectionChange)="OnChangeSDestination($event.value)">
+          <mat-option *ngFor="let destination of destinations" [value]="destination.id">
+            {{destination.touristDestinationState}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="spacer"></span>
+      <mat-form-field class="styled-form">
+        <mat-label>Seleccione ciudad</mat-label>
+        <mat-select [disabled]="disableSelectCity.value" name="city" (selectionChange)="selectCity($event.value)">
+          @for (city of cities; track city) {
+          <mat-option [value]="city">{{city}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="styled-form">
+        <mat-label>Hospedajes en el area</mat-label>
+        <mat-select [disabled]="disableSelectAccommodation.value" name="accommodation"
+                    (selectionChange)="OnChangeSAccomodations($event.value)">
+          <mat-option *ngFor="let accommodation of accommodations" [value]="accommodation.id">
+            {{accommodation.accommodationName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="addRecord()">Crear</button>
+
+      <button mat-raised-button color="warn" (click)="back()" style="margin-top: 10px">Volver</button>
+    </div>
+  </div>
+</div>

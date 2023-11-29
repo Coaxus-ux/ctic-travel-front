@@ -8,6 +8,8 @@ import {AccommodationComponent} from "./components/admin/accommodation/accommoda
 import {AddPlacesToDestinationsComponent} from "./components/admin/add-places-to-destinations/add-places-to-destinations.component";
 import {AddPlansComponent} from "./components/admin/add-plans/add-plans.component";
 import {EditPlansComponent} from "./components/admin/edit-plans/edit-plans.component";
+import {RegisterComponent} from "./components/admin/register/register.component";
+
 export const routes: Routes = [
   {
     path: 'admin/auth',
@@ -53,6 +55,11 @@ export const routes: Routes = [
     path: 'admin/edit-plans/:planId',
     title: 'Edit Plans',
     component: EditPlansComponent
+  },
+  {
+    path: 'admin/register',
+    title: 'Register',
+    component: RegisterComponent
   }
 ];
 

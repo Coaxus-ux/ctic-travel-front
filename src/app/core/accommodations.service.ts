@@ -52,6 +52,26 @@ export class AccommodationsService {
       data: data
     })
   }
+  getAccommodationByLocation( country: string, state: string, city: string) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/accommodation/getAccommodationsByLocation',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      data: {
+        accommodationCountry: country,
+        accommodationState: state,
+        accommodationCity: city
+      }
+    })
+  }
+  addAccommodationPlan(data: any) {
+    return axios({
+      method: 'post',
+      url: this.baseUrl + '/accommodationsTouristPlans/addAccommodationsTouristPlans',
+      headers: {Authorization: "Bearer " + this.jwt, "Content-Type": "application/json"},
+      data: data
+    })
+  }
 
 
 }
