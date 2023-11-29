@@ -9,6 +9,7 @@ services:
       - "4200:4200"
     networks:
       - front_citcd
+    restart: always
 
 networks:
   front_citcd:
